@@ -31,7 +31,14 @@
     <style type="text/css">
         @import url('https://fonts.googleapis.com/css2?family=Bookman+Old+Style&display=swap');
 
-    
+
+
+        .row {
+            max-width: 100% !important;
+            /* Override any max-width constraints */
+            margin-left: 0 !important;
+            /* Remove left margin */
+        }
 
         .nav {
             align-items: center;
@@ -54,7 +61,7 @@
 
 
         }
-    
+
         .glass {
             width: 100%;
             height: 400px;
@@ -79,6 +86,23 @@
 
             margin-right: 100px;
             white-space: nowrap;
+        }
+
+        .scrollable-row {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            /* Enable touch-based scrolling on iOS devices */
+            -ms-overflow-style: none;
+            /* Hide scrollbar on Internet Explorer, Edge */
+            scrollbar-width: none;
+            /* Hide scrollbar on Firefox */
+        }
+
+        .scrollable-row::-webkit-scrollbar {
+            display: none;
+            /* Hide scrollbar on Chrome, Safari */
         }
 
 
@@ -164,6 +188,9 @@
             height: 100px;
             width: 350px;
             padding-top: 30px;
+            margin-bottom: 20px;
+
+
         }
 
         .drinks {
@@ -179,6 +206,93 @@
         #collapseSection:target {
             display: block;
         }
+
+
+        @media only screen and (max-width: 650px) {
+            div.bg-black {
+                text-align: center;
+            }
+
+            ul.list-inline {
+                display: none;
+            }
+
+            .visible-on-small {
+                display: block;
+            }
+
+            div.text1 {
+                display: none;
+            }
+
+            hr.text1 {
+                display: none;
+            }
+
+            i.last {
+                display: none;
+
+            }
+
+            span.last {
+                display: none;
+            }
+
+            span.design1 {
+                color: white;
+                width: fit-content;
+                background-color: black;
+                padding: 5px;
+                margin-top: 20px;
+            }
+
+            .nav-pills {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .nav-link {
+                width: 100%;
+                text-align: center;
+            }
+
+
+            .flex-sm-row {
+                flex-direction: column;
+            }
+
+            .nav-pills .nav-link:nth-child(1) {
+                order: 3;
+                margin-top: 2px;
+            }
+
+            .nav-pills .nav-link:nth-child(2) {
+                order: 1;
+
+            }
+
+            .nav-pills .nav-link:nth-child(3) {
+                order: 2;
+                margin-top: 2px;
+
+            }
+
+            .search1 {
+                display: none !important;
+            }
+        }
+
+
+
+
+        @media (min-width: 651px) {
+            .visible-on-small {
+                display: none;
+            }
+            .search2 {
+                display: none !important;
+            }
+        }
     </style>
 
 </head>
@@ -187,7 +301,7 @@
 
 <body>
 
-    <nav class="navbar navbar-dark bg-black" style="height: 90px;">
+    <nav class="navbar navbar-dark bg-black px-0" style="height: 90px;">
         <div class="container-fluid h-100">
             <div class="row align-items-center h-100">
                 <div class="col d-flex justify-content-start align-items-center">
@@ -199,7 +313,7 @@
                     <a class="navbar-brand" href="#">LOGO</a>
                 </div>
 
-                <div class="col-8 d-flex justify-content-center">
+                <div class="search1 col-8 d-flex justify-content-center">
                     <form class="w-100">
                         <div class="input-group">
                             <input class="form-control bg-transparent" type="search" placeholder="Search..."
@@ -235,6 +349,20 @@
         </div>
     </nav>
 
+    <div class="row mx-0">
+        <div class="search2 col-12 d-flex justify-content-center bg-dark py-3">
+            <form class="w-100">
+                <div class="input-group input-group-sm" style="width: 90%;">
+                    <input class="form-control bg-transparent text-light border-end-0" type="search" placeholder="Search..."
+                        aria-label="Search">
+                    <button class="btn btn-outline-light border-start-0" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
 
 
     <div class="container-fluid">
@@ -305,7 +433,7 @@
             <strong class="fw-bold fs-4 me-3">Explore popular categories</strong>
             <span class="me-3">see all</span>
         </p>
-        <div class="row justify-content-around">
+        <div class="scrollable-row">
             <div class="col text-center">
                 <div class="test text-center" style="background-color: #B89170;">
                     <a href="#">Whiskey</a>
@@ -333,6 +461,7 @@
             </div>
         </div>
     </div>
+
 
 
     <div class="container mt-5" style="max-width: 1400px;">
@@ -371,80 +500,77 @@
     </nav>
 
 
-    <div class="py-2 mt-5">
-        <div class="row">
-            <div class="d-flex justify-content-start align-items-center">
-                <div class="col-auto" style="margin-left: 70px;">
+    <div class=" container-fluid py-2 mt-5">
+        <div class="scrollable-row">
+            <div class="col-auto ">
 
-                    <img src="image4.jpg" class="img1" />
+                <img src="image4.jpg" class="img1" />
 
-                    <div class="row align-items-center" style="font-weight: 700;">
-                        <div class="dot text-center">0.7L</div>
-                        Lorem Ipsum<br />Gel 00.00
-
-                    </div>
-                    <button type="button" class="shop">shop now</button>
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
 
                 </div>
-                <div class="col-auto">
-                    <img src="image4.jpg" class="img1" />
-                    <div class="row align-items-center" style="font-weight: 700;">
-                        <div class="dot text-center">0.7L</div>
-                        Lorem Ipsum<br />Gel 00.00
+                <button type="button" class="shop">shop now</button>
 
-                    </div>
-                    <button type="button" class="shop">shop now</button>
+            </div>
+            <div class="col-auto">
+                <img src="image4.jpg" class="img1" />
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
+
                 </div>
+                <button type="button" class="shop">shop now</button>
+            </div>
 
-                <div class="col-auto">
-                    <img src="image4.jpg" class="img1" />
-                    <div class="row align-items-center" style="font-weight: 700;">
-                        <div class="dot text-center">0.7L</div>
-                        Lorem Ipsum<br />Gel 00.00
+            <div class="col-auto">
+                <img src="image4.jpg" class="img1" />
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
 
-                    </div>
-                    <button type="button" class="shop">shop now</button>
                 </div>
-                <div class="col-auto">
-                    <img src="image4.jpg" class="img1" />
-                    <div class="row align-items-center" style="font-weight: 700;">
-                        <div class="dot text-center">0.7L</div>
-                        Lorem Ipsum<br />Gel 00.00
+                <button type="button" class="shop">shop now</button>
+            </div>
+            <div class="col-auto">
+                <img src="image4.jpg" class="img1" />
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
 
-                    </div>
-                    <button type="button" class="shop">shop now</button>
                 </div>
+                <button type="button" class="shop">shop now</button>
+            </div>
 
-                <div class="col-auto">
-                    <img src="image4.jpg" class="img1" />
-                    <div class="row align-items-center" style="font-weight: 700;">
-                        <div class="dot text-center">0.7L</div>
-                        Lorem Ipsum<br />Gel 00.00
+            <div class="col-auto">
+                <img src="image4.jpg" class="img1" />
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
 
-                    </div>
-                    <button type="button" class="shop">shop now</button>
                 </div>
-                <div class="col-auto">
-                    <img src="image4.jpg" class="img1" />
-                    <div class="row align-items-center" style="font-weight: 700;">
-                        <div class="dot text-center">0.7L</div>
-                        Lorem Ipsum<br />Gel 00.00
+                <button type="button" class="shop">shop now</button>
+            </div>
+            <div class="col-auto">
+                <img src="image4.jpg" class="img1" />
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
 
-                    </div>
-                    <button type="button" class="shop">shop now</button>
                 </div>
+                <button type="button" class="shop">shop now</button>
             </div>
         </div>
     </div>
 
 
-    <div class="purple text-center" style="padding-top: 40px; min-height: 450px;">
+    <div class="purple text-center" style="padding: 40px; height: fit-content">
 
 
         <h1 style="margin-top: 45px;">Why Alcoshop</h1>
-        <div class="row justify-content-evenly"
-            style="margin-top: 70px; font-size: 22px; font-weight: 100; margin-left: 20px;">
-            <div class="lpurple">
+        <div class="row justify-content-evenly" style="margin-top: 70px; font-size: 22px; font-weight: 100;">
+            <div class="lpurple" style="margin-bottom: 20px;">
                 <i class="bi bi-credit-card"></i>
                 Lorem Ipsum
             </div>
@@ -470,15 +596,16 @@
 
     <div class="py-2">
         <div class="row">
-            <div class="col-12 ">
-                <div class="scrollable-row" style="max-width: 100%;">
-                    <img src="5.jpg" class=" drinks img-fluid" alt="Image 1">
-                    <img src="6.jpg" class=" drinks img-fluid" alt="Image 2">
-                    <img src="7.jpg" class=" drinks img-fluid" alt="Image 3">
-                    <img src="8.jpg" class=" drinks img-fluid" alt="Image 4">
-                    <img src="5.jpg" class=" drinks img-fluid" alt="Image 5">
-                    <img src="6.jpg" class=" drinks img-fluid" alt="Image 6">
-                    <img src="7.jpg" class=" drinks img-fluid" alt="Image 7">
+            <div class="col-12">
+                <div class="scrollable-row"
+                    style="max-width: 100%; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch;">
+                    <img src="5.jpg" class="drinks img-fluid" alt="Image 1">
+                    <img src="6.jpg" class="drinks img-fluid" alt="Image 2">
+                    <img src="7.jpg" class="drinks img-fluid" alt="Image 3">
+                    <img src="8.jpg" class="drinks img-fluid" alt="Image 4">
+                    <img src="5.jpg" class="drinks img-fluid" alt="Image 5">
+                    <img src="6.jpg" class="drinks img-fluid" alt="Image 6">
+                    <img src="7.jpg" class="drinks img-fluid" alt="Image 7">
                 </div>
                 <div class="text-muted" style="text-align: center;">
                     <button class="btn btn-link text-muted" style="margin-top: 55px; font-size: 14px;"
@@ -486,28 +613,27 @@
                         See All
                     </button>
                 </div>
-                <hr style="margin-top: 0;   background-color: black; width: 100%;">
-
+                <hr style="margin-top: 0; background-color: black; width: 100%;">
             </div>
             <!-- Collapsible section -->
             <div id="collapseSection">
                 <p class="text-center">something something</p>
             </div>
-
         </div>
     </div>
-    </div>
 
 
-    <div class="bg-black text-white" style="height: 690px;">
+
+
+    <div class="bg-black text-white" style="height: fit-content;">
 
         <div class="col-md-12" style="padding-top: 40px;">
             <h1 style="margin-top: 30px; margin-left: 75px;">LOGO</h1>
         </div>
 
 
-        <div class="row" style="margin-top: 45px; margin-left: 75px; font-size: 19px;">
-            <div class="col">
+        <div class="row" style="margin-top: 45px; padding-left: 75px; font-size: 19px;">
+            <div class="text1 col">
 
                 <p><strong>Get to Know Us</strong></p>
                 <div class="text-muted">
@@ -521,7 +647,7 @@
                 </div>
             </div>
 
-            <div class="col">
+            <div class="text1 col">
 
                 <p><strong>Make Money with Us</p></strong>
                 <div class="text-muted">
@@ -535,7 +661,7 @@
                 </div>
             </div>
 
-            <div class="col">
+            <div class="text1 col">
 
                 <p><strong>Make Money with Us</p></strong>
                 <div class="text-muted">
@@ -549,7 +675,7 @@
                 </div>
             </div>
 
-            <div class="col">
+            <div class="text1 col">
 
                 <p><strong>Make Money with Us</p></strong>
                 <div class="text-muted">
@@ -560,6 +686,31 @@
                     <p>Investor Relations</p>
                     <p>Amazon Devices</p>
                     <p>Amazon Tours</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 visible-on-small">
+                <nav class="navbar navbar-dark">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" style="border-color: transparent;" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
+                            aria-controls="navbarToggleExternalContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                            contact
+                        </button>
+                    </div>
+                </nav>
+            </div>
+            <div class="visible-on-small collapse" id="navbarToggleExternalContent">
+                <div class="p-4" style="font-size: 12px;">
+                    <i class="bi bi-phone"></i>
+                    <span>+(995) 551 600 203</span>
+                    <i class=" bi bi-envelope" style="margin-left: 45px;"></i>
+                    <span>info@alcoshop.ge</span>
+                    <i class=" bi bi-facebook" style="margin-left: 45px;"></i>
+                    <span>Alcoshop</span>
+
                 </div>
             </div>
 
@@ -567,31 +718,51 @@
 
 
 
-        <div class="col-md-11 text-muted" style="margin-top: 65px;">
+        <div class="col-md-11" style="margin-top: 65px; padding-bottom: 30px;">
 
-            <hr style="background-color: white; width: 100%; margin-left: 75px; margin-top: 45px;">
-            <div style="margin-top: 35px;">
-                <span class="text-muted" style="margin-left: 75px; margin-top: 45px;">This website contains content with
-                    alcohol</span>
+            <hr class="text1" style="background-color: white; width: 100%; margin-left: 75px; margin-top: 45px;">
 
-                <i class="bi bi-phone" style="margin-left: 550px;"></i>
-                <span>+(995) 551 600 203</span>
-                <i class="bi bi-envelope" style="margin-left: 45px;"></i>
-                <span>info@alcoshop.ge</span>
-                <i class="bi bi-facebook" style="margin-left: 45px;"></i>
-                <span>Alcoshop</span>
+
+            <div class="row" style="margin-top: 30px;">
+                <div class="col-md-6 d-flex justify-content-start">
+                    <!-- Left side content -->
+                    <span class="text-muted ms-md-5" style="margin-left: 80px;">This website contains content with
+                        alcohol</span>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-6 col-12 d-flex flex-wrap justify-content-end pe-md-5">
+                    <!-- Right side content -->
+                    <i class="last bi bi-phone" style="margin-right: 5px;"></i>
+                    <span class="last text-muted me-3 mb-3">+(995) 551 600 203</span>
+                    <i class="last bi bi-envelope" style="margin-right: 5px;"></i>
+                    <span class="last text-muted me-3 mb-3">info@alcoshop.ge</span>
+                    <i class="last bi bi-facebook" style="margin-right: 5px;"></i>
+                    <span class="last text-muted mb-3">Alcoshop</span>
+                </div>
             </div>
+
 
         </div>
 
     </div>
 
-    <div style="height: 81px; padding-top: 30px; display: flex; align-items: center; justify-content: space-between;">
-        <span style="margin-left: 75px;">All rights reserved Alcohol Online Shop 2020</span>
-        <i class="bi bi-alexa" style=" margin-left:950px; font-size: 25px;"></i>
-        <span style="margin-right: 150px; font-size: 11px;">Design.ge</span>
+    <div style="height: fit-content; padding: 40px;">
+        <div class="row">
+            <div class="col-lg-6 d-flex align-items-center justify-content-start" style="padding-left: 40px;">
+                <span class="d-lg-block d-flex justify-content-lg-start justify-content-center align-items-center">
+                    <span class="d-inline-block d-lg-block">All rights reserved Alcohol Online Shop 2020</span>
+                </span>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center justify-content-end" style="padding-right: 135px;">
+                <span class="design1 d-flex justify-content-lg-end justify-content-center align-items-center">
+                    <i class="bi bi-alexa me-3 d-lg-inline-block "></i>
+                    <span class="d-inline-block d-lg-block">Design.ge</span>
+                </span>
+            </div>
+        </div>
     </div>
+
 
 
 </body>
+
 </html>
