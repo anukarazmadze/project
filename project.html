@@ -23,8 +23,9 @@
 
 
 
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
-
+    <script type='text/javascript' src='/templates/clear/assets/swiper/js/swiper.min.js'></script>
 
 
 
@@ -44,6 +45,19 @@
             align-items: center;
 
         }
+
+        .offcanvas-body a {
+            color: black !important;
+            /* Change the color to black or the desired color */
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            width: 270px;
+        }
+
+
+
 
 
         .list-inline li {
@@ -70,34 +84,73 @@
         }
 
 
+        .pn-ProductNav_Wrapper {
+            position: relative;
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
 
-        ul {
-            list-style: none;
-            padding: 0;
-            overflow: auto;
+        /* Add cursor style for active dragging */
+        .pn-ProductNav:active {
+            cursor: grabbing;
+        }
+
+        .pn-ProductNav {
+            cursor: grab;
+
+            /* Make this scrollable when needed */
+            overflow-x: auto;
+            /* We don't want vertical scrolling */
+            overflow-y: hidden;
+            /* For WebKit implementations, provide inertia scrolling */
+            -webkit-overflow-scrolling: touch;
+            /* We don't want internal inline elements to wrap */
             white-space: nowrap;
 
         }
 
+        .pn-ProductNav_Link {
+            text-decoration: none;
+            color: black;
+            font-size: 1.2em;
+            font-family: -apple-system, sans-serif;
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            border: none;
+            padding: 8px 25px;
+            margin-right: 60px;
+        }
 
+        .pn-ProductNav_Link:hover {
+            text-decoration: none;
+            /* Remove underline on hover */
+            color: black;
+            /* Set the text color to black on hover */
 
-        li {
-            display: inline-block;
+        }
 
-            margin-right: 100px;
-            white-space: nowrap;
+        #pnProductNav::-webkit-scrollbar {
+            display: none;
+            /* Hide scrollbar in Webkit browsers (like Chrome and Safari) */
+        }
+        .scrollable-row:active {
+            cursor: grabbing;
         }
 
         .scrollable-row {
             display: flex;
             flex-wrap: nowrap;
             overflow-x: auto;
+
             -webkit-overflow-scrolling: touch;
             /* Enable touch-based scrolling on iOS devices */
             -ms-overflow-style: none;
             /* Hide scrollbar on Internet Explorer, Edge */
             scrollbar-width: none;
             /* Hide scrollbar on Firefox */
+            cursor: grab;
+
         }
 
         .scrollable-row::-webkit-scrollbar {
@@ -105,22 +158,21 @@
             /* Hide scrollbar on Chrome, Safari */
         }
 
-
-
         .test {
             width: 230px;
             line-height: 230px;
             border-radius: 50%;
             margin: 10px;
 
-
         }
+
 
         .test a {
             text-decoration: underline;
             color: white;
             font-size: 27px;
         }
+
 
         .nav-pills .nav-link {
             border-radius: 0;
@@ -190,7 +242,6 @@
             padding-top: 30px;
             margin-bottom: 20px;
 
-
         }
 
         .drinks {
@@ -213,12 +264,16 @@
                 text-align: center;
             }
 
-            ul.list-inline {
+            .list-inline {
                 display: none;
             }
 
             .visible-on-small {
                 display: block;
+            }
+
+            .pn-ProductNav_Wrapper {
+                display: none;
             }
 
             div.text1 {
@@ -266,6 +321,7 @@
                 margin-top: 2px;
             }
 
+
             .nav-pills .nav-link:nth-child(2) {
                 order: 1;
 
@@ -283,12 +339,11 @@
         }
 
 
-
-
         @media (min-width: 651px) {
             .visible-on-small {
                 display: none;
             }
+
             .search2 {
                 display: none !important;
             }
@@ -305,11 +360,46 @@
         <div class="container-fluid h-100">
             <div class="row align-items-center h-100">
                 <div class="col d-flex justify-content-start align-items-center">
-                    <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler me-3" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel" style="width: 250px;">
+                        <div class="offcanvas-header">
+                            <a href="project.html" class="btn btn-link">
+                                <img src="10.jpg" id="offcanvasNavbarLabel" role="button" alt="Homepage">
+                            </a>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div class="collapse show navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="project.html">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#contactssection">Contacts</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Terms and Conditions</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Products</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Blog</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Delivery Text</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Return Policy</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
                     <a class="navbar-brand" href="#">LOGO</a>
                 </div>
 
@@ -334,27 +424,25 @@
                         <button type="button"
                             class="btn btn-danger dropdown-toggle dropdown-toggle-split bg-transparent border-0"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
 
+                        <div class="dropdown-menu p-1" style="min-width:auto; background-color: black;">
+                            <a class="dropdown-item" href="#" style="color: white;">geo</a>
+                        </div>
 
-                        <ul class="dropdown-menu">
-                            geo
-                        </ul>
+                        <i class="bi bi-bag text-white fs-4 me-3"></i>
+                        <i class="bi bi-cart2 text-white fs-4"></i>
                     </div>
-                    <i class="bi bi-bag text-white fs-4 me-3"></i>
-                    <i class="bi bi-cart2 text-white fs-4"></i>
                 </div>
             </div>
-        </div>
     </nav>
 
     <div class="row mx-0">
         <div class="search2 col-12 d-flex justify-content-center bg-dark py-3">
             <form class="w-100">
                 <div class="input-group input-group-sm" style="width: 90%;">
-                    <input class="form-control bg-transparent text-light border-end-0" type="search" placeholder="Search..."
-                        aria-label="Search">
+                    <input class="form-control bg-transparent text-light border-end-0" type="search"
+                        placeholder="Search..." aria-label="Search">
                     <button class="btn btn-outline-light border-start-0" type="submit">
                         <i class="bi bi-search"></i>
                     </button>
@@ -362,22 +450,32 @@
             </form>
         </div>
     </div>
-    
 
 
-    <div class="container-fluid">
-        <ul class="list-inline">
-            <li style="text-decoration: underline; color: black;"><strong>Whiskey</strong></a></li>
-            <li>Vodka</li>
-            <li>Rum</li>
-            <li>Tequila</li>
-            <li>Wine</li>
-            <li>Gin</li>
-            <li>Vermouth</li>
-            <li>Brandy</li>
-            <li>Beer</li>
+    <div class="pn-ProductNav_Wrapper">
+        <nav id="pnProductNav" class="pn-ProductNav">
+            <div id="pnProductNavContents" class="pn-ProductNav_Contents">
+                <a href="#" class="pn-ProductNav_Link" aria-selected="true">Whiskey</a>
+                <a href="#" class="pn-ProductNav_Link">Vodka</a>
+                <a href="#" class="pn-ProductNav_Link">Rum</a>
+                <a href="#" class="pn-ProductNav_Link">Tequila</a>
+                <a href="#" class="pn-ProductNav_Link">Wine</a>
+                <a href="#" class="pn-ProductNav_Link">Gin</a>
+                <a href="#" class="pn-ProductNav_Link">Vermouth</a>
+                <a href="#" class="pn-ProductNav_Link">Brandy</a>
+                <a href="#" class="pn-ProductNav_Link">Cognac</a>
+                <a href="#" class="pn-ProductNav_Link">Champagne</a>
+                <a href="#" class="pn-ProductNav_Link">Absent</a>
+                <a href="#" class="pn-ProductNav_Link">Tonic</a>
+                <a href="#" class="pn-ProductNav_Link">Snack</a>
+                <a href="#" class="pn-ProductNav_Link">Cocktails</a>
+                <a href="#" class="pn-ProductNav_Link">Draft beer</a>
+                <a href="#" class="pn-ProductNav_Link">Chacha</a>
+                <a href="#" class="pn-ProductNav_Link">Kvevri Wine</a>
+                <a href="#" class="pn-ProductNav_Link">Non-Alcoholic</a>
 
-        </ul>
+            </div>
+        </nav>
 
     </div>
 
@@ -390,7 +488,6 @@
                 <img class="glass" src="image2.jpg" alt="Image">
                 <div
                     class="carousel-caption text-start d-flex flex-column justify-content-center align-items-start top-0">
-                    <!-- Text over the image -->
                     <h1>Contrary to popular belief, Lorem Ipsum is not simply</h1>
                     <p class="mt-3">Contrary to popular belief, Lorem Ipsum is not simply</p>
                 </div>
@@ -426,8 +523,6 @@
         </ol>
     </div>
 
-
-
     <div class="container-fluid mt-4">
         <p>
             <strong class="fw-bold fs-4 me-3">Explore popular categories</strong>
@@ -455,13 +550,38 @@
                 </div>
             </div>
             <div class="col text-center">
-                <div class="test text-center" style="background-color: #999999;">
-                    <a href="#">Vodka</a>
+                <div class="test text-center" style="background-color: #DAD0B6;">
+                    <a href="#">Tequila</a>
                 </div>
             </div>
+            <div class="col text-center">
+                <div class="test text-center" style="background-color: #80A9A4;">
+                    <a href="#">Rum</a>
+                </div>
+            </div>
+            <div class="col text-center">
+                <div class="test text-center" style="background-color: #8ABAAE;">
+                    <a href="#">Brandy</a>
+                </div>
+            </div>
+            <div class="col text-center">
+                <div class="test text-center" style="background-color: #4D8680;">
+                    <a href="#">Vermouth</a>
+                </div>
+            </div>
+            <div class="col text-center">
+                <div class="test text-center" style="background-color: #8E8E8E;">
+                    <a href="#">Champange</a>
+                </div>
+            </div>
+            <div class="col text-center">
+                <div class="test text-center" style="background-color: #6C5454;">
+                    <a href="#">Absent</a>
+                </div>
+            </div>
+
         </div>
     </div>
-
 
 
     <div class="container mt-5" style="max-width: 1400px;">
@@ -470,9 +590,11 @@
                 <img src="image3.jpg" class="img-fluid rounded" alt="Image" style="width: 700px;">
             </div>
             <div class="col-md-5" style="font-family: 'Berlin Sans FB', sans-serif; font-size: 20px;">
-                <h2 class="mt-2" style="font-weight: 500; font-size: 45px;">Contrary to popular belief, Lorem Ipsum is
+                <h2 class="mt-2" style="font-weight: 500; font-size: 45px;">Contrary to popular belief, Lorem Ipsum
+                    is
                     not simply</h2>
-                <p class="mt-5 text-muted" style="line-height: 1;">There are many variations of passages of Lorem Ipsum
+                <p class="mt-5 text-muted" style="line-height: 1;">There are many variations of passages of Lorem
+                    Ipsum
                     available, but the majority have
                     suffered alteration in some form, by injected humour, or randomised words which don't look even
                     slightly
@@ -498,7 +620,6 @@
             Bestsellers <span class="small" style="margin-left: 300px;">see all</span>
         </a>
     </nav>
-
 
     <div class=" container-fluid py-2 mt-5">
         <div class="scrollable-row">
@@ -561,6 +682,87 @@
                 </div>
                 <button type="button" class="shop">shop now</button>
             </div>
+            <div class="col-auto">
+                <img src="image4.jpg" class="img1" />
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
+
+                </div>
+                <button type="button" class="shop">shop now</button>
+            </div>
+            <div class="col-auto">
+                <img src="image4.jpg" class="img1" />
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
+
+                </div>
+                <button type="button" class="shop">shop now</button>
+            </div>
+            <div class="col-auto">
+                <img src="image4.jpg" class="img1" />
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
+
+                </div>
+                <button type="button" class="shop">shop now</button>
+            </div>
+            <div class="col-auto">
+                <img src="image4.jpg" class="img1" />
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
+
+                </div>
+                <button type="button" class="shop">shop now</button>
+            </div>
+            <div class="col-auto">
+                <img src="image4.jpg" class="img1" />
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
+
+                </div>
+                <button type="button" class="shop">shop now</button>
+            </div>
+            <div class="col-auto ">
+
+                <img src="image4.jpg" class="img1" />
+
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
+
+                </div>
+                <button type="button" class="shop">shop now</button>
+
+            </div>
+            <div class="col-auto ">
+
+                <img src="image4.jpg" class="img1" />
+
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
+
+                </div>
+                <button type="button" class="shop">shop now</button>
+
+            </div>
+            <div class="col-auto ">
+
+                <img src="image4.jpg" class="img1" />
+
+                <div class="row align-items-center" style="font-weight: 700;">
+                    <div class="dot text-center">0.7L</div>
+                    Lorem Ipsum<br />Gel 00.00
+
+                </div>
+                <button type="button" class="shop">shop now</button>
+
+            </div>
         </div>
     </div>
 
@@ -589,8 +791,6 @@
             </div>
 
         </div>
-
-
     </div>
 
 
@@ -606,8 +806,17 @@
                     <img src="5.jpg" class="drinks img-fluid" alt="Image 5">
                     <img src="6.jpg" class="drinks img-fluid" alt="Image 6">
                     <img src="7.jpg" class="drinks img-fluid" alt="Image 7">
+                    <img src="8.jpg" class="drinks img-fluid" alt="Image 4">
+                    <img src="5.jpg" class="drinks img-fluid" alt="Image 1">
+                    <img src="6.jpg" class="drinks img-fluid" alt="Image 2">
+                    <img src="7.jpg" class="drinks img-fluid" alt="Image 3">
+                    <img src="8.jpg" class="drinks img-fluid" alt="Image 4">
+                    <img src="5.jpg" class="drinks img-fluid" alt="Image 1">
+                    <img src="6.jpg" class="drinks img-fluid" alt="Image 2">
+                    <img src="7.jpg" class="drinks img-fluid" alt="Image 3">
+
                 </div>
-                <div class="text-muted" style="text-align: center;">
+                <div class=" text-muted" style="text-align: center;">
                     <button class="btn btn-link text-muted" style="margin-top: 55px; font-size: 14px;"
                         onclick="location.href='#collapseSection'">
                         See All
@@ -622,16 +831,11 @@
         </div>
     </div>
 
-
-
-
     <div class="bg-black text-white" style="height: fit-content;">
 
         <div class="col-md-12" style="padding-top: 40px;">
             <h1 style="margin-top: 30px; margin-left: 75px;">LOGO</h1>
         </div>
-
-
         <div class="row" style="margin-top: 45px; padding-left: 75px; font-size: 19px;">
             <div class="text1 col">
 
@@ -713,7 +917,6 @@
 
                 </div>
             </div>
-
         </div>
 
 
@@ -721,15 +924,14 @@
         <div class="col-md-11" style="margin-top: 65px; padding-bottom: 30px;">
 
             <hr class="text1" style="background-color: white; width: 100%; margin-left: 75px; margin-top: 45px;">
-
-
             <div class="row" style="margin-top: 30px;">
                 <div class="col-md-6 d-flex justify-content-start">
                     <!-- Left side content -->
                     <span class="text-muted ms-md-5" style="margin-left: 80px;">This website contains content with
                         alcohol</span>
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-6 col-12 d-flex flex-wrap justify-content-end pe-md-5">
+                <div id="contactssection"
+                    class="col-md-6 col-lg-6 col-xl-6 col-12 d-flex flex-wrap justify-content-end pe-md-5">
                     <!-- Right side content -->
                     <i class="last bi bi-phone" style="margin-right: 5px;"></i>
                     <span class="last text-muted me-3 mb-3">+(995) 551 600 203</span>
@@ -739,8 +941,6 @@
                     <span class="last text-muted mb-3">Alcoshop</span>
                 </div>
             </div>
-
-
         </div>
 
     </div>
@@ -763,6 +963,174 @@
 
 
 
+    <script>
+        function startAutoScroll(element) {
+            let scrollAmount = 1; // Adjust the scrolling speed as needed
+            let isScrollingRight = true;
+            let scrollInterval;
+
+            function scroll() {
+                scrollInterval = setInterval(() => {
+                    if (isScrollingRight) {
+                        element.scrollLeft += scrollAmount;
+                        if (element.scrollLeft >= (element.scrollWidth - element.clientWidth)) {
+                            isScrollingRight = false;
+                        }
+                    } else {
+                        element.scrollLeft -= scrollAmount;
+                        if (element.scrollLeft <= 0) {
+                            isScrollingRight = true;
+                        }
+                    }
+                    element.classList.add('active'); 
+                }, 50); // Adjust the interval timing as needed (in milliseconds)
+            }
+
+            function stopScroll() {
+                clearInterval(scrollInterval);
+                element.classList.remove('active'); // Remove 'active' class when scrolling stops
+            }
+
+            scroll();
+            // Add a function to reset the interval timing after a certain duration
+            function resetScrollInterval() {
+                clearInterval(scrollInterval);
+                scrollInterval = setInterval(scroll, 5000); // Reset interval to slower speed after 5 seconds 
+            }
+            let isGrabbing = false;
+            let startGrabX, startScrollLeft;
+
+            element.addEventListener('mousedown', (e) => {
+                isGrabbing = true;
+                startGrabX = e.clientX;
+                startScrollLeft = element.scrollLeft;
+                element.classList.add('active');
+            });
+
+            element.addEventListener('mousemove', (e) => {
+                if (isGrabbing) {
+                    const mouseX = e.clientX;
+                    const scrollDistance = (mouseX - startGrabX) * 2; // Adjust the scrolling speed
+                    element.scrollLeft = startScrollLeft - scrollDistance;
+                }
+            });
+
+            element.addEventListener('mouseup', () => {
+                isGrabbing = false;
+                element.classList.remove('active');
+            });
+
+            element.addEventListener('mouseleave', () => {
+                isGrabbing = false;
+                element.classList.remove('active');
+            });
+
+            element.addEventListener('touchstart', (e) => {
+                isGrabbing = true;
+                const touch = e.touches[0];
+                startGrabX = touch.clientX;
+                startScrollLeft = element.scrollLeft;
+                element.classList.add('active');
+            });
+
+            element.addEventListener('touchmove', (e) => {
+                if (isGrabbing) {
+                    const touchMove = e.touches[0];
+                    const touchX = touchMove.clientX;
+                    const scrollDistance = (touchX - startGrabX) * 2; // Adjust the scrolling speed
+                    element.scrollLeft = startScrollLeft - scrollDistance;
+                }
+            });
+
+            element.addEventListener('touchend', () => {
+                isGrabbing = false;
+                element.classList.remove('active');
+            });
+        }
+
+        window.onload = function () {
+            const productNav = document.getElementById('pnProductNav');
+            if (productNav) {
+                startAutoScroll(productNav);
+            }
+        };
+
+
+        function handleHorizontalScrolling() {
+            const scrollableElements = document.querySelectorAll('.scrollable-row');
+
+            scrollableElements.forEach(scrollableElement => {
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+                let scrollInterval;
+
+                function startAutoScroll() {
+                    scrollInterval = setInterval(() => {
+                        if (!isDown) {
+                            if (scrollableElement.scrollLeft <= 0) {
+                                isScrollingRight = true;
+                            } else if (
+                                scrollableElement.scrollLeft >=
+                                scrollableElement.scrollWidth - scrollableElement.clientWidth
+                            ) {
+                                isScrollingRight = false;
+                            }
+
+                            if (isScrollingRight) {
+                                scrollableElement.scrollLeft += 1; // Adjust the scrolling speed
+                            } else {
+                                scrollableElement.scrollLeft -= 1; // Adjust the scrolling speed
+                            }
+                        }
+                    }, 50); // Adjust the interval timing 
+                }
+
+                scrollableElement.addEventListener('mousedown', e => {
+                    isDown = true;
+                    startX = e.pageX - scrollableElement.offsetLeft;
+                    scrollLeft = scrollableElement.scrollLeft;
+                    scrollableElement.classList.add('active');
+                    clearInterval(scrollInterval);
+                });
+
+                scrollableElement.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    scrollableElement.classList.remove('active');
+                    startAutoScroll();
+                });
+
+                scrollableElement.addEventListener('mouseup', () => {
+                    isDown = false;
+                    scrollableElement.classList.remove('active');
+                    startAutoScroll();
+                });
+
+                scrollableElement.addEventListener('mousemove', e => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - scrollableElement.offsetLeft;
+                    const walk = (x - startX) * 1; // Adjust scrolling speed
+                    scrollableElement.scrollLeft = scrollLeft - walk;
+                });
+
+                scrollableElement.addEventListener('touchstart', () => {
+                    clearInterval(scrollInterval);
+                });
+
+                scrollableElement.addEventListener('touchend', () => {
+                    setTimeout(() => {
+                        startAutoScroll();
+                    }, 3000); // Adjust the delay (in milliseconds) before restarting auto-scroll after touch
+                });
+
+                startAutoScroll();
+            });
+        }
+
+        handleHorizontalScrolling();
+
+    </script>
 </body>
 
 </html>
